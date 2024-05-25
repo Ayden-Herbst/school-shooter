@@ -6,6 +6,10 @@ var player = null
 @onready var player_spawn_point = $PlayerSpawnPoint
 @onready var laser_container = $LaserContainer
 
+@export var enemy_scenes: Array[PackedScene] = []
+@onready var timer = $EnemySpawnTimer
+@onready var enemy_container = $EnemyContainer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Giving the game access to the player node 
@@ -31,3 +35,8 @@ func _on_player_laser_shot(laser_scene, location):
 	print(location)
 	laser_container.add_child(laser)
 
+func _on_enemy_spawn_timer_timeout():
+	print('woof')
+	var en = enemy_scenes.pick_random().instantiate()
+	en.global_position = Vector2(randf_range(50, 750), -10)
+	enemy_container.add_child(en)

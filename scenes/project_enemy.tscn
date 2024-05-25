@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b230sd13b7hj1"]
+[gd_scene load_steps=4 format=3 uid="uid://b230sd13b7hj1"]
 
 [ext_resource type="PackedScene" uid="uid://o1d4cc2cqb8u" path="res://scenes/enemy.tscn" id="1_jya5b"]
+[ext_resource type="Script" path="res://scripts/project_enemy.gd" id="2_1lyle"]
 [ext_resource type="Texture2D" uid="uid://cblnnqyvro48" path="res://assets/enemy2.png" id="2_p8hyc"]
 
 [node name="ProjectEnemy" instance=ExtResource("1_jya5b")]
+script = ExtResource("2_1lyle")
+speed = 100.0
+player = NodePath("")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_p8hyc")

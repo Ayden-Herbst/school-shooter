@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 #defining speed
-@export var speed = 400.0
+@export var speed = 550.0
 @export var hp = 100
 
 #getting laser scene to be accessed
