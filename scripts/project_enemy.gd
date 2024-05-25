@@ -12,7 +12,7 @@ func die():
 	queue_free()
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	var player_node = get_node("../Player") as CharacterBody2D #Accesses the Player Node
+	var player_node = get_tree().get_first_node_in_group("player")
 	if player_node:
 		player_node.reduce_health(20)
 		print(player_node.hp)
