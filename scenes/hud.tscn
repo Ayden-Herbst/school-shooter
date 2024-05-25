@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://w4urfusrgfa"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_h6bxn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kynad"]
+bg_color = Color(0.261031, 0.610384, 0.983162, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h30cn"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_h6bxn")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_top = 1253.0
+offset_right = 801.0
+offset_bottom = 1280.0
+theme_override_styles/background = SubResource("StyleBoxFlat_kynad")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h30cn")
+value = 100.0
