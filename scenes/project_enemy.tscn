@@ -6,8 +6,8 @@
 
 [node name="ProjectEnemy" instance=ExtResource("1_jya5b")]
 script = ExtResource("2_1lyle")
-speed = 100.0
-player = NodePath("")
+speed = 75.0
+hp = 4
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_p8hyc")

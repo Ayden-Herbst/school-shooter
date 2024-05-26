@@ -15,4 +15,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 func _on_area_entered(area):
 	if area is Enemy || ProjectEnemy:
 		queue_free()
-		area.die()
+		area.lose_hp()

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pqtc4dlng5fl" path="res://assets/pencil.png" id="2_sefvj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wt72f"]
-size = Vector2(9, 61)
+size = Vector2(9, 56)
 
 [node name="Laser" type="Area2D"]
 collision_layer = 4
@@ -12,7 +12,7 @@ collision_mask = 2
 script = ExtResource("1_6rr3u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.50003, -0.5)
+position = Vector2(-1.50003, -2)
 shape = SubResource("RectangleShape2D_wt72f")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
@@ -21,7 +21,7 @@ scale = Vector2(1.05, 0.800003)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -0.811578
-scale = Vector2(0.201974, 0.201974)
+scale = Vector2(0.106303, 0.106303)
 texture = ExtResource("2_sefvj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

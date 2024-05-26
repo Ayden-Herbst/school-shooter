@@ -3,11 +3,13 @@ class_name Player extends CharacterBody2D
 #defining speed
 @export var speed = 550.0
 @export var hp = 100
+@export var ammo = 15
 
 #getting laser scene to be accessed
 var laser_scene = preload("res://scenes/laser.tscn")
 signal laser_shot(laser_scene, location)
 signal health_changed(new_hp)
+signal ammo_changed(new_ammo)
 
 @onready var muzzle = $Muzzle
 
@@ -30,15 +32,33 @@ func _physics_process(delta):
 	
 # sends a signal telling the game where the make the bullet appear from and what to make apear
 func shoot():
-	laser_shot.emit(laser_scene, muzzle.global_position)
+	if ammo > 0:
+		ammo -= 1
+		laser_shot.emit(laser_scene, muzzle.global_position)
+		emit_signal("ammo_changed", ammo)
+	else: 
+		print('out of ammo')
 	
 func reduce_health(amount):
 	hp -= amount
 	hp = max(hp, 0)  # Ensure hp doesn't go below 0
+	hp = min(hp, 100)
 	emit_signal("health_changed", hp)
 	if hp <= 0:
 		die()
 		
+func increase_health(amount):
+	hp += amount
+	hp = max(hp, 0)  # Ensure hp doesn't go below 0
+	hp = min(hp, 100)
+	emit_signal("health_changed", hp)
+	print(amount)
+
+func reload(amount):
+	ammo += amount
+	emit_signal("ammo_changed", ammo)
+	print(ammo)
+
 func die():
 	# Handle the player's death here
 	queue_free()

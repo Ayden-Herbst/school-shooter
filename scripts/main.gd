@@ -1,6 +1,7 @@
 extends Node2D
 
 var player = null
+var en = null
 # creating a variable that will receive its value on runtime (@onready)
 # accesses and stores the spwan point node
 @onready var player_spawn_point = $PlayerSpawnPoint
@@ -37,6 +38,13 @@ func _on_player_laser_shot(laser_scene, location):
 
 func _on_enemy_spawn_timer_timeout():
 	print('woof')
-	var en = enemy_scenes.pick_random().instantiate()
-	en.global_position = Vector2(randf_range(50, 750), -10)
-	enemy_container.add_child(en)
+	var sting_op = randi_range(1, 10)
+	print(sting_op)
+	if sting_op > 1:
+		en = enemy_scenes[0].instantiate()
+		en.global_position = Vector2(randf_range(50, 750), -10)	
+		enemy_container.add_child(en)
+	elif sting_op == 1:
+		en = enemy_scenes[1].instantiate()
+		en.global_position = Vector2(randf_range(50, 750), -10)	
+		enemy_container.add_child(en)
