@@ -38,7 +38,7 @@ func _on_player_laser_shot(laser_scene, location):
 
 func _on_enemy_spawn_timer_timeout():
 	print('woof')
-	var sting_op = randi_range(1, 10)
+	var sting_op = randi_range(1, 7)
 	print(sting_op)
 	if sting_op > 1:
 		en = enemy_scenes[0].instantiate()

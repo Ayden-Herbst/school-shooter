@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_h6bxn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kynad"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(1, 0, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h30cn"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0.623529, 0.329412, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_km6u8"]
 font_size = 69

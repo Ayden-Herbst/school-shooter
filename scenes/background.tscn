@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://x2x2kk2o36d0"]
+
+[ext_resource type="Texture2D" uid="uid://b8pykv4kdavjx" path="res://assets/bg.jpg" id="1_xged4"]
+
+[node name="Background" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_offset = Vector2(2.08165e-12, 50)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2(2.08165e-12, 100)
+motion_mirroring = Vector2(2.08165e-12, 1280)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 803.0
+offset_bottom = 1291.0
+texture = ExtResource("1_xged4")

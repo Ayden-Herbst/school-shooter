@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsptpyb6da0lp"]
+[gd_scene load_steps=8 format=3 uid="uid://dsptpyb6da0lp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0x67i"]
 [ext_resource type="PackedScene" uid="uid://dfjcreq588cjd" path="res://scenes/player.tscn" id="2_ek8db"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b230sd13b7hj1" path="res://scenes/project_enemy.tscn" id="3_5c5pe"]
 [ext_resource type="PackedScene" uid="uid://o1d4cc2cqb8u" path="res://scenes/enemy.tscn" id="4_bnrpm"]
 [ext_resource type="PackedScene" uid="uid://w4urfusrgfa" path="res://scenes/hud.tscn" id="5_rmhpg"]
+[ext_resource type="PackedScene" uid="uid://x2x2kk2o36d0" path="res://scenes/background.tscn" id="7_t4kja"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0x67i")
@@ -27,7 +28,9 @@ position = Vector2(33, 0)
 [node name="EnemyContainer" type="Node" parent="."]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 1.391
+wait_time = 1.138
 autostart = true
+
+[node name="Background" parent="." instance=ExtResource("7_t4kja")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var health_bar = $ProgressBar
 @onready var ammo_lable = $ammoLabel
 
-func _process(_delta):
+func _ready():
 	var player = get_node("../Player")
 	if player:
 		player.connect("health_changed", Callable(self, "_on_health_changed"))
