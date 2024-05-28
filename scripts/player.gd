@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 #defining speed, health and starting ammumition
 @export var speed = 550.0
 @export var hp = 100
-@export var ammo = 15
+@export var ammo = 5
 
 # getting laser scene to be accessed
 var laser_scene = preload("res://scenes/laser.tscn")
@@ -66,8 +66,9 @@ func increase_health(amount):
 
 # This will just handle the increase in ammunition whenever an enemy is killed
 func reload(amount):
-	ammo += amount
-	emit_signal("ammo_changed", ammo)
+	if ammo < 9:
+		ammo += amount
+		emit_signal("ammo_changed", ammo)
 	print(ammo)
 
 

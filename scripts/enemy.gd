@@ -16,9 +16,9 @@ func die():
 	var player_node = get_tree().get_first_node_in_group("player")
 
 	# adding health to the player when enemy is killed by a shot
-	player_node.increase_health(2)
+	player_node.increase_health(1)
 	# giving the player 2 ammunition when enemy killed
-	player_node.reload(2)
+	player_node.reload(1)
 
 	# just for debugging
 	print("enemy dies")
@@ -47,6 +47,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	
 	# quite simple, if we do get a value for player_node (i.e. != null), we call its reduce_health function and remove the enemy															# can't do this to a class and don't bloody want to get_node()
 	if player_node:
-		player_node.reduce_health(5)
+		player_node.reduce_health(10)
 		print(player_node.hp)
 		queue_free() # free the enemy node when it exits the screen

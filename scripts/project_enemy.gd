@@ -11,7 +11,7 @@ func _physics_process(delta):
 
 func die():
 	var player_node = get_tree().get_first_node_in_group("player")
-	player_node.reload(4)
+	player_node.reload(5)
 	print("project enemy dies")
 	queue_free()
 	
