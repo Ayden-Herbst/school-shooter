@@ -26,6 +26,7 @@ func _ready():
 	player.global_position = player_spawn_point.global_position
 	# Just giving us access to that laser shot signal from earlier
 	player.laser_shot.connect(_on_player_laser_shot)
+	get_tree().paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -33,6 +34,7 @@ func _process(_delta):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+
 
 func _on_player_laser_shot(laser_scene, location):
 	# creating a laser instance
@@ -55,3 +57,4 @@ func _on_enemy_spawn_timer_timeout():
 		en = enemy_scenes[1].instantiate()
 		en.global_position = Vector2(randf_range(50, 750), -10)	
 		enemy_container.add_child(en)
+
