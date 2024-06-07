@@ -20,9 +20,8 @@ position = Vector2(-1.49999, 47)
 scale = Vector2(1.05, 0.800003)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, -3)
 rotation = -0.811578
-scale = Vector2(0.046, 0.046)
+scale = Vector2(0.106303, 0.106303)
 texture = ExtResource("2_sefvj")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

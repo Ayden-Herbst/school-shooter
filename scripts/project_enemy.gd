@@ -1,7 +1,7 @@
 class_name ProjectEnemy extends Area2D
 
 @export var speed = 75.0
-@export var hp = 3
+@export var hp = 4
 
 # Called when the node enters the scene tree for the first time.
 
