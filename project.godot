@@ -21,6 +21,14 @@ window/size/viewport_width=800
 window/size/viewport_height=1280
 window/stretch/mode="viewport"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://scenes/": "red",
+"res://scripts/": "green"
+}
+
 [input]
 
 quit={
