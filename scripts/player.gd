@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @export var speed:int = 550
-@export var hp:int = 100
+@export var hp:float = 100.0
 @export var ammo:int = 5
 
 signal laser_shot(laser_scene, location)
@@ -11,11 +11,11 @@ signal ammo_changed(new_ammo)
 @export var muzzle: Node
 var laser_scene = preload("res://scenes/laser.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Vector2(
 		Input.get_axis("move_left", "move_right"), # Horizontal Axis
 		Input.get_axis("move_up", "move_down") # Vertical Axis
@@ -37,7 +37,7 @@ func reduce_health(amount:float):
 	hp -= amount
 	hp = max(hp, 0)  # Ensure hp doesn't go below 0
 	hp = min(hp, 100)
-	emit_signal("health_changed", hp)
+	health_changed.emit(hp)
 	if hp <= 0:
 		die()
 
@@ -45,7 +45,7 @@ func increase_health(amount:float):
 	hp += amount
 	hp = max(hp, 0) 
 	hp = min(hp, 100)
-	emit_signal("health_changed", hp)
+	health_changed.emit(hp)
 	print(amount)
 
 func reload(amount:int):

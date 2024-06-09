@@ -38,4 +38,7 @@ autostart = true
 
 [node name="Background" parent="." instance=ExtResource("7_t4kja")]
 
+[connection signal="ammo_changed" from="Player" to="HUD" method="_on_player_ammo_changed"]
+[connection signal="health_changed" from="Player" to="HUD" method="_on_player_health_changed"]
+[connection signal="laser_shot" from="Player" to="." method="_on_player_laser_shot"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

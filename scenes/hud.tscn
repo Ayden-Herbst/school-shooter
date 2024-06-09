@@ -11,8 +11,10 @@ bg_color = Color(0, 0.623529, 0.329412, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_km6u8"]
 font_size = 69
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("health_bar", "ammo_lable")]
 script = ExtResource("1_h6bxn")
+health_bar = NodePath("ProgressBar")
+ammo_lable = NodePath("AmmoLabel")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_top = 1193.0
@@ -23,7 +25,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_kynad")
 theme_override_styles/fill = SubResource("StyleBoxFlat_h30cn")
 value = 100.0
 
-[node name="ammoLabel" type="Label" parent="."]
+[node name="AmmoLabel" type="Label" parent="."]
 offset_right = 209.0
 offset_bottom = 120.0
 theme_override_font_sizes/font_size = 9

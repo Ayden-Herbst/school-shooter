@@ -13,7 +13,6 @@ var en = null
 func _ready():
 	assert(player!=null)
 	player.global_position = player_spawn_point.global_position
-	player.laser_shot.connect(_on_player_laser_shot)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("quit"):
@@ -28,7 +27,6 @@ func _on_player_laser_shot(laser_scene, location):
 	laser_container.add_child(laser)
 
 func _on_enemy_spawn_timer_timeout():
-	print('woof')
 	var sting_op = randi_range(1, 7)
 	print(sting_op)
 	if sting_op > 1:
