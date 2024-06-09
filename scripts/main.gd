@@ -1,5 +1,4 @@
 extends Node2D
-
 var en = null
 
 @export var player_spawn_point: Node

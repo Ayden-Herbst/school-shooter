@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-# getting the respective nodes
 @export var health_bar: Node
 @export var ammo_lable: Node
 

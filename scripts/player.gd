@@ -32,22 +32,18 @@ func shoot():
 	else: 
 		print('out of ammo')
 	
-
-func reduce_health(amount:float):
-	hp -= amount
-	hp = max(hp, 0)  # Ensure hp doesn't go below 0
-	hp = min(hp, 100)
-	health_changed.emit(hp)
-	if hp <= 0:
-		die()
-
-func increase_health(amount:float):
-	hp += amount
-	hp = max(hp, 0) 
-	hp = min(hp, 100)
-	health_changed.emit(hp)
-	print(amount)
-
+func change_health(amount:float, sign:bool):
+	if sign == true:
+		hp += amount
+		hp = clamp(hp, 0, 100)
+		health_changed.emit(hp)
+		print("Health increased")
+	elif sign == false:
+		hp -= amount
+		hp = clamp(hp, 0, 100)
+		health_changed.emit(hp)
+		print("Health Decreased")
+		
 func reload(amount:int):
 	if ammo < 9:
 		ammo += amount
