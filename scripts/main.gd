@@ -4,20 +4,25 @@ var en = null
 @export var player_spawn_point: Node
 @export var laser_container: Node
 @export var enemy_scenes: Array[PackedScene] = []
+@export var background: Node
 
 @export var timer: Node
 @export var enemy_container: Node
 @export var player: Node
 
+var s = 150
+
 func _ready():
 	assert(player!=null)
 	player.global_position = player_spawn_point.global_position
 
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+		
+	background.scroll_offset.y += delta * s
 
 func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
