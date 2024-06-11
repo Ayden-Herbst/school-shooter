@@ -5,8 +5,8 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kynad"]
 bg_color = Color(1, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h30cn"]
-bg_color = Color(0, 0.623529, 0.329412, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tc47"]
+bg_color = Color(0.67703, 0.606476, 7.97429e-07, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_km6u8"]
 font_size = 69
@@ -22,7 +22,7 @@ offset_right = 801.0
 offset_bottom = 1280.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/background = SubResource("StyleBoxFlat_kynad")
-theme_override_styles/fill = SubResource("StyleBoxFlat_h30cn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6tc47")
 value = 100.0
 
 [node name="AmmoLabel" type="Label" parent="."]

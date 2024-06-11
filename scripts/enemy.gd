@@ -5,11 +5,19 @@ const hp_init = 1
 @export var hp = 1
 @onready var player = get_tree().get_first_node_in_group("player")
 
+@export var test_enemy: Node
+@export var explosion: Node
+@export var exp_anim: Node
+
 func _physics_process(delta):
 	global_position.y += speed * delta
 
 func die():
+	test_enemy.visible = false
+	explosion.visible = true
+	exp_anim.play("new_animation")
 	player.change_health(1, true)
+	
 	var amt = randi_range(1, 10)
 	if amt <= 2:
 		player.reload(3)
@@ -17,6 +25,8 @@ func die():
 		player.reload(2)
 	else:
 		player.reload(1)
+
+	await get_tree().create_timer(1).timeout
 	queue_free()
 	
 func lose_hp():

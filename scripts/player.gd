@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var speed:int = 550
+@export var speed:int = 750
 @export var hp:float = 100.0
 @export var ammo:int = 5
 

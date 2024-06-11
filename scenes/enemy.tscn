@@ -1,15 +1,105 @@
-[gd_scene load_steps=4 format=3 uid="uid://o1d4cc2cqb8u"]
+[gd_scene load_steps=8 format=3 uid="uid://o1d4cc2cqb8u"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_2u6yj"]
 [ext_resource type="Texture2D" uid="uid://ced0gwp1qdnuo" path="res://assets/enemy.png" id="1_hgtmf"]
+[ext_resource type="Texture2D" uid="uid://bt0r4wyffnmwm" path="res://assets/Explosion.png" id="3_tqt3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb57b"]
 size = Vector2(52, 68)
 
-[node name="Enemy" type="Area2D"]
+[sub_resource type="Animation" id="Animation_tlp0x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_hvrhd"]
+resource_name = "new_animation"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 36),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 3, 4, 5, 6, 8, 9, 11, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ntaa"]
+_data = {
+"RESET": SubResource("Animation_tlp0x"),
+"new_animation": SubResource("Animation_hvrhd")
+}
+
+[node name="Enemy" type="Area2D" node_paths=PackedStringArray("test_enemy", "explosion", "exp_anim")]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_2u6yj")
+test_enemy = NodePath("Sprite2D")
+explosion = NodePath("Explosion")
+exp_anim = NodePath("AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -21,5 +111,17 @@ texture = ExtResource("1_hgtmf")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -38)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ntaa")
+}
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.8125, 1.8125)
+texture = ExtResource("3_tqt3k")
+hframes = 12
+frame = 1
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
