@@ -1,9 +1,9 @@
 class_name Enemy extends Area2D
 
-@export var speed = 400.0
-const hp_init = 1
-@export var hp = 1
-@onready var player = get_tree().get_first_node_in_group("player")
+@export var speed: float = 400.0
+const hp_init: int = 1
+@export var hp: float = 1
+@onready var player: Node = get_tree().get_first_node_in_group("player")
 
 @export var test_enemy: Node
 @export var explosion: Node
