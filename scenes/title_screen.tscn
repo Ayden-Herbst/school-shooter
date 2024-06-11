@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgp0tw3vj1hyc"]
+[gd_scene load_steps=4 format=3 uid="uid://cgp0tw3vj1hyc"]
 
 [ext_resource type="Texture2D" uid="uid://bydfbo3ssng0j" path="res://assets/Space Background (2).png" id="1_newb4"]
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_urvis"]
+[ext_resource type="AudioStream" uid="uid://b6h6mud4acgxy" path="res://audio/despacito.mp3" id="3_rmdb5"]
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" node_paths=PackedStringArray("audio")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,11 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_urvis")
+audio = NodePath("TitleScreenAudio")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_newb4")
 
 [node name="Button" type="Button" parent="."]
@@ -29,6 +34,30 @@ theme_override_constants/h_separation = 0
 theme_override_constants/icon_max_width = 0
 theme_override_font_sizes/font_size = 38
 text = "Play"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 642.0
+offset_right = 641.0
+offset_bottom = 815.0
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_font_sizes/font_size = 38
+text = "Mouse"
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 640.0
+offset_right = 410.0
+offset_bottom = 813.0
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_font_sizes/font_size = 38
+text = "KB"
 
 [node name="TextEdit" type="TextEdit" parent="."]
 layout_mode = 0
@@ -55,4 +84,10 @@ theme_override_font_sizes/normal_font_size = 63
 bbcode_enabled = true
 text = "[center]School Shooter v0[/center]"
 
+[node name="TitleScreenAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rmdb5")
+autoplay = true
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_pressed"]

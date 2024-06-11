@@ -18,9 +18,8 @@ func die():
 	test_enemy.visible = false
 	explosion.visible = true
 	exp_anim.play("new_animation")
-	player.change_health(1, true)
+	player.change_health(7, true)
 	player.reload(5)
-	await get_tree().create_timer(1).timeout
 	queue_free()
 	
 func lose_hp():

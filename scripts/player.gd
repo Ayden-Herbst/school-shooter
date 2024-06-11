@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@export var speed:int = 750
+@export var speed:int = 1250
 @export var hp:float = 100.0
 @export var ammo:int = 5
 
@@ -15,14 +15,17 @@ func _process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		shoot()
 		
-func _physics_process(_delta):
-	var direction = Vector2(
-		Input.get_axis("move_left", "move_right"), # Horizontal Axis
-		Input.get_axis("move_up", "move_down") # Vertical Axis
-		)
-		
-	velocity = direction * speed
-	move_and_slide()
+func _physics_process(delta):
+	var target_position = get_viewport().get_mouse_position()
+	var distance = target_position.distance_to(self.position)
+
+	# Define dead zone radius
+	var dead_zone_radius = 10.0 
+
+	if distance > dead_zone_radius:
+		var movement_vector = target_position - self.position
+		movement_vector = movement_vector.normalized() * delta * speed
+		position = position.lerp(target_position, 0.7)
 
 func shoot():
 	if ammo > 0:

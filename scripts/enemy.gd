@@ -25,8 +25,6 @@ func die():
 		player.reload(2)
 	else:
 		player.reload(1)
-
-	await get_tree().create_timer(1).timeout
 	queue_free()
 	
 func lose_hp():
