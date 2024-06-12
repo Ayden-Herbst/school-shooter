@@ -8,6 +8,7 @@ const hp_init: int = 1
 @export var test_enemy: Node
 @export var explosion: Node
 @export var exp_anim: Node
+@export var collision_shape: Node
 
 func _physics_process(delta):
 	global_position.y += speed * delta
@@ -25,6 +26,9 @@ func die():
 		player.reload(2)
 	else:
 		player.reload(1)
+		
+	collision_shape.set_deferred("disabled", true)
+	await get_tree().create_timer(1).timeout
 	queue_free()
 	
 func lose_hp():

@@ -93,20 +93,21 @@ _data = {
 "new_animation": SubResource("Animation_hvrhd")
 }
 
-[node name="Enemy" type="Area2D" node_paths=PackedStringArray("test_enemy", "explosion", "exp_anim")]
+[node name="Enemy" type="Area2D" node_paths=PackedStringArray("test_enemy", "explosion", "exp_anim", "collision_shape")]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_2u6yj")
 test_enemy = NodePath("Sprite2D")
 explosion = NodePath("Explosion")
 exp_anim = NodePath("AnimationPlayer")
+collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pb57b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.171123, 0.171123)
+scale = Vector2(0.117647, 0.117647)
 texture = ExtResource("1_hgtmf")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
