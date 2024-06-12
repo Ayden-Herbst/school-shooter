@@ -6,11 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://b230sd13b7hj1" path="res://scenes/project_enemy.tscn" id="3_5c5pe"]
 [ext_resource type="PackedScene" uid="uid://o1d4cc2cqb8u" path="res://scenes/enemy.tscn" id="4_bnrpm"]
 [ext_resource type="PackedScene" uid="uid://w4urfusrgfa" path="res://scenes/hud.tscn" id="5_rmhpg"]
-[ext_resource type="PackedScene" uid="uid://x2x2kk2o36d0" path="res://scenes/background.tscn" id="7_t4kja"]
+[ext_resource type="Texture2D" uid="uid://dtlq1drblpdy1" path="res://assets/bg_1.png" id="7_a0a2i"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("player_spawn_point", "laser_container", "background", "timer", "enemy_container", "player")]
 script = ExtResource("1_0x67i")
+player_spawn_point = NodePath("PlayerSpawnPoint")
+laser_container = NodePath("LaserContainer")
 enemy_scenes = Array[PackedScene]([ExtResource("4_bnrpm"), ExtResource("3_5c5pe")])
+background = NodePath("ParallaxBackground")
+timer = NodePath("EnemySpawnTimer")
+enemy_container = NodePath("EnemyContainer")
+player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_ek8db")]
 
@@ -31,6 +37,19 @@ position = Vector2(33, 0)
 wait_time = 1.138
 autostart = true
 
-[node name="Background" parent="." instance=ExtResource("7_t4kja")]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(0, 300)
 
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_offset = Vector2(2.08165e-12, 100)
+motion_mirroring = Vector2(0, 1280)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(400, 640)
+texture = ExtResource("7_a0a2i")
+
+[connection signal="ammo_changed" from="Player" to="HUD" method="_on_player_ammo_changed"]
+[connection signal="health_changed" from="Player" to="HUD" method="_on_player_health_changed"]
+[connection signal="laser_shot" from="Player" to="." method="_on_player_laser_shot"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

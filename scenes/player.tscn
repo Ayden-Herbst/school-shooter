@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc5r8"]
 size = Vector2(79, 79)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("muzzle") groups=["player"]]
 position = Vector2(0, -2)
 motion_mode = 1
 script = ExtResource("1_5qfti")
+muzzle = NodePath("Muzzle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hc5r8")
@@ -19,5 +20,5 @@ position = Vector2(-2, -88)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, 1)
-scale = Vector2(0.426471, 0.42647)
+scale = Vector2(0.264706, 0.264705)
 texture = ExtResource("2_7ywgn")
