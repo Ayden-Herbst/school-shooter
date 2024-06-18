@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://w4urfusrgfa" path="res://scenes/hud.tscn" id="5_rmhpg"]
 [ext_resource type="Texture2D" uid="uid://dtlq1drblpdy1" path="res://assets/bg_1.png" id="7_a0a2i"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("player_spawn_point", "laser_container", "background", "timer", "enemy_container", "player")]
+[node name="Lesson1" type="Node2D" node_paths=PackedStringArray("player_spawn_point", "laser_container", "background", "timer", "enemy_container", "player")]
 script = ExtResource("1_0x67i")
 player_spawn_point = NodePath("PlayerSpawnPoint")
 laser_container = NodePath("LaserContainer")

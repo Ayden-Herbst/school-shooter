@@ -1,4 +1,4 @@
-extends Node2D
+class_name Lesson extends Node2D
 var en = null
 
 @export var player_spawn_point: Node

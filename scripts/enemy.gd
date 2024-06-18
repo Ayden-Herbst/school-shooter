@@ -9,6 +9,7 @@ const hp_init: int = 1
 @export var explosion: Node
 @export var exp_anim: Node
 @export var collision_shape: Node
+@export var death_sound: Node
 
 func _physics_process(delta):
 	global_position.y += speed * delta
@@ -20,15 +21,20 @@ func die():
 	player.change_health(1, true)
 	
 	var amt = randi_range(1, 10)
+	print(amt)
 	if amt <= 2:
 		player.reload(3)
+		print(3)
 	elif amt <= 6:
 		player.reload(2)
+		print(2)
 	else:
 		player.reload(1)
+		print(1)
 		
 	collision_shape.set_deferred("disabled", true)
-	await get_tree().create_timer(1).timeout
+	death_sound.play()
+	await get_tree().create_timer(0.7).timeout
 	queue_free()
 	
 func lose_hp():
